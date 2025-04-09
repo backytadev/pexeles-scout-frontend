@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const GaleryImages = ({ searchParams }: Props) => {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["pexels-images", searchParams],
     queryFn: () => queryPexelesApi(searchParams as PexelesQueryParams),
     enabled: !!searchParams,
@@ -36,7 +36,11 @@ export const GaleryImages = ({ searchParams }: Props) => {
         </span>
       </div>
 
-      {data === undefined ? (
+      {isLoading ? (
+        <div className="text-center text-gray-600 text-lg">
+          <span className="animate-pulse">Cargando Imágenes....</span>
+        </div>
+      ) : data === undefined ? (
         <div className="text-center text-gray-600 text-lg">
           <span className="animate-pulse">
             Esperando parámetros de consulta....

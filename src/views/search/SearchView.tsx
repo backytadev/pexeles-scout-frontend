@@ -27,6 +27,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { GaleryImages } from "@/components/GaleryImages";
+import { Badge } from "@/components/ui/badge";
 
 export const SearchView = () => {
   //* States
@@ -38,8 +39,8 @@ export const SearchView = () => {
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
       query: "",
-      page: "",
-      perPage: "",
+      page: "1",
+      perPage: "10",
     },
   });
 
@@ -87,6 +88,12 @@ export const SearchView = () => {
                 <FormItem className="w-full">
                   <FormLabel className="text-[14px] font-semibold text-teal-600">
                     Cantidad de imágenes
+                    <Badge
+                      variant={"secondary"}
+                      className="bg-teal-400 text-[10px] text-teal-800 "
+                    >
+                      OPCIONAL
+                    </Badge>
                   </FormLabel>
                   <FormDescription className="text-[13.5px] md:text-[14px] text-gray-600">
                     ¿Cuántas imágenes quieres ver por página?
@@ -118,6 +125,12 @@ export const SearchView = () => {
                 <FormItem className="w-full">
                   <FormLabel className="text-[14px] font-semibold text-teal-600">
                     Página
+                    <Badge
+                      variant={"secondary"}
+                      className="bg-teal-400 text-[10px] text-teal-800 "
+                    >
+                      OPCIONAL
+                    </Badge>
                   </FormLabel>
                   <FormDescription className="text-[13.5px] md:text-[14px] text-gray-600">
                     Selecciona que página quieres ver

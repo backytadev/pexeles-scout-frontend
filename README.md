@@ -1,54 +1,39 @@
-# React + TypeScript + Vite
+<p align="center">
+  <a href="https://react.dev/" target="blank"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" width="200" alt="React Logo" /></a>
+</p>
+<p align="center">The library for web and native user interfaces.</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[circleci-image]: https://img.shields.io/circleci/build/github/nodejs/node/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nodejs/node
 
-Currently, two official plugins are available:
+# PEXELES-SCOUT-FRONTEND
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a responsive frontend web application that connects to a RESTful backend to display high-quality images from the Pexels API. It supports user authentication, image search, and account management, providing a seamless and interactive user experience, the following technologies are used:
 
-## Expanding the ESLint configuration
+- React
+- Tanstack Query
+- Axios
+- Shadcn
+- React Router Dom
+- React Hook Form
+- Zod
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation and Run Locally
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Install my-project with npm or pnpm
+
+1. Clone the project
+
+2. Install dependencies
+
+```
+npm i or pnpm i
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Clone the `.env.template` and change it to `.env` and configure its environment variables.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Raise the frontend-server dev mode
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```
+npm run dev or pnpm run dev
 ```

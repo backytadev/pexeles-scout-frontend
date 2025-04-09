@@ -8,7 +8,7 @@ import {
 
 import { updateProfile } from "@/api/AuthAPI";
 
-import { UserFormData } from "@/interfaces/login-form-data.interface";
+import { UserFormData } from "@/interfaces/user-form-data.interface";
 import { type ErrorResponse } from "@/interfaces/error-response.interface";
 
 interface Options {

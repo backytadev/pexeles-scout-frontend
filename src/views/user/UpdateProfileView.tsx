@@ -183,7 +183,7 @@ export const UpdateProfileView = () => {
                       render={({ field }) => {
                         const disabledRoles = [UserRole.SuperUser];
                         const isDisabled =
-                          !data?.roles.includes(UserRole.SuperUser) &&
+                          !data?.roles?.includes(UserRole.SuperUser) &&
                           disabledRoles?.includes(role);
                         return (
                           <FormItem

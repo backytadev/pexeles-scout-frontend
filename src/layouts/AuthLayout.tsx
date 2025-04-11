@@ -1,6 +1,19 @@
+import { useSocket } from "@/hooks/useSocket";
+import { useAuthStore } from "@/stores/auth/auth.store";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 export const AuthLayout = () => {
+  const { disconnectSocket } = useSocket(import.meta.env.VITE_API_URL_SOCKET);
+
+  const authStatus = useAuthStore((state) => state.status);
+
+  useEffect(() => {
+    if (authStatus === "unauthorized") {
+      disconnectSocket();
+    }
+  }, [authStatus, disconnectSocket]);
+
   return (
     <div className="animate-fadeIn">
       <div className="bg-neutral-100 dark:bg-slate-950 flex h-screen overflow-hidden">

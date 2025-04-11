@@ -1,5 +1,5 @@
 import { create, type StateCreator } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import { loginUser } from '@/api/AuthAPI';
 import { type AuthStatus } from '@/types/auth-status.type';
@@ -18,7 +18,13 @@ export const storeApi: StateCreator<AuthState> = (set) => ({
 
   loginUser: async (email: string, password: string) => {
     try {
-      const token = await loginUser({ email, password });
+      const response = await loginUser({ email, password });
+
+      if (!response) {
+        throw new Error('Login failed: No response from server');
+      }
+
+      const { token } = response;
 
       set({ status: 'authorized', token });
     } catch (error) {
@@ -30,10 +36,15 @@ export const storeApi: StateCreator<AuthState> = (set) => ({
 
   logoutUser: () => {
     set({ status: 'unauthorized', token: undefined });
-    localStorage.removeItem('AUTH_TOKEN');
+    sessionStorage.removeItem('AUTH_TOKEN');
   },
 });
 
 export const useAuthStore = create<AuthState>()(
-  devtools(persist(storeApi, { name: 'auth-storage' }))
+  devtools(
+    persist(storeApi, {
+      name: 'auth-storage',
+      storage: createJSONStorage(() => sessionStorage),
+    })
+  )
 );

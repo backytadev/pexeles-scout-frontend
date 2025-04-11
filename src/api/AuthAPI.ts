@@ -23,9 +23,12 @@ export async function createUser(formData: UserFormData) {
 
 export async function loginUser(formData: LoginFormData) {
   try {
-    const { data } = await api.post<string>('/auth/login', formData);
+    const { data } = await api.post<{ token: string }>('/auth/login', formData);
 
-    localStorage.setItem('AUTH_TOKEN', data);
+    // const part = data.token.slice(-3);
+    // sessionStorage.setItem(`AUTH_TOKEN${part}`, data.token);
+    sessionStorage.setItem(`AUTH_TOKEN`, data.token);
+
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {

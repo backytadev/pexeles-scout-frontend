@@ -168,7 +168,10 @@ export const SearchView = () => {
         </Form>
       </div>
 
-      <GaleryImages searchParams={searchParams} />
+      <GaleryImages
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
     </div>
   );
 };
